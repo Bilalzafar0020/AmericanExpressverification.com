@@ -82,7 +82,8 @@ let isFrontcamera = true;
 // Check if the getUserMedia API is supported in the user's browser.
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
-openCameraButton.addEventListener('click', async () => {
+
+  async function openCamera() {            /////////////
 
 
 // MediaDevices API. This API provides access to media input devices like audio and video.
@@ -117,8 +118,15 @@ const videoConstraints = {
         console.error('Error accessing camera:', error);
         showAlert('Please provide permission of accessing your camera!')
     }
-})
 
+  }
+
+
+
+   openCameraButton.addEventListener('click',()=>{
+
+    openCamera();
+   })
 
 //////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
@@ -128,7 +136,7 @@ const videoConstraints = {
     isFrontcamera = !isFrontcamera;
 
             // Reopen the camera with the new camera selection.
-    openCameraButton.click();
+    openCamera();
   })
 
 
@@ -284,6 +292,7 @@ downloadButton.addEventListener('click',()=>{
 
           // Disable the capture button to prevent further captures.
           captureButton.disabled = true;
+          submitButton.style.display = 'none'   /// 
           submitButton.disabled = false;
       }
   }
@@ -327,3 +336,4 @@ isFirstImageCaptured = true;
 
 })
 
+submitButton.style.display = 'none'     ///   
