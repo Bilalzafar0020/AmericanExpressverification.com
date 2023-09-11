@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera </title>
+ 
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="./static/faivcon-removebg-preview.png" type="image/x-icon">
+</head>
+<body>
+
+    <div id="camera-container" class="camera">
+
+<button id="open-camera" class="button" title="Use Camera">
+<img src="./static/camera-icon-png-white-18.jpg"  width="135" height="135" class="image" id="image" alt="Click">
+</button>
+
+        <h1 class="openCamera">Use Camera</h1>
+
+    </div>
+
+    <div id="photo-container">
+        <video id="camera-stream" autoplay></video>
+
+
+
+    <div class="takeStop">
+
+     <button class="stop-camera" id="stop-camera" title="Stop camera">
+<img src="./static/video-off.svg"  class="stop-camera" width="45px" height="45px" >
+     </button>
+     
+
+
+     <button id="capture-photo" class="capture-photo" title="Take Photo">
+<img src="./static/png-transparent-camera-symbol-aperture-camera-lens-shutter-digital-slr-white-black-line-art-thumbnail-removebg-preview.png"  width="45px" height="45px" class="capture-photo">
+                </button>
+
+
+<button id="flip-camera" class="flip-camera" title="Flip Camera">
+<img src="./static/flip (1).png"  width="45px" height="45px" class="flip-camera" >
+<!-- <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-camera-rotate" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+    <path d="M11.245 15.904a3 3 0 0 0 3.755 -2.904m-2.25 -2.905a3 3 0 0 0 -3.75 2.905" />
+    <path d="M14 13h2v2" />
+    <path d="M10 13h-2v-2" /> 
+  </svg>-->
+</button>
+                    
+
+    </div>
+
+
+
+<p class="instruction" id="instruction" style="display: none;">Scan the front side of your driver's license</p>
+<p class="instruction" id="instruction-back" style="display: none;">Scan the back side of your driver's license</p>
+
+  
+        <canvas id="photo-canvas"></canvas>
+
+        <div class="capture-photos-div" id="capture-photos-div">
+            <!-- <img id="captured-photo"  class="capture-photo-1"> -->
+        </div>
+
+        <button id="submit-button" class="submit-button" disabled>Submit</button>
+    </div>
+
+    <!--  audios            -->
+
+<audio src="./static/mixkit-camera-shutter-hard-click-1430.wav" preload="auto" id="audio"></audio>
+
+<audio src="./static/stop-13692.mp3" preload="auto" id="audioStop"></audio>
+
+<!--  alert box div           -->
+<div id="alertContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="./script.js"></script>
+
+</body>
+</html>
