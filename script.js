@@ -131,14 +131,32 @@ const videoConstraints = {
 //////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 //////////////////////////////////////////// Toggle between front and back camera.
-  flipCamera.addEventListener('click', ()=>{
+flipCamera.addEventListener('click', async () => {
+  isFrontcamera = !isFrontcamera;
 
-    isFrontcamera = !isFrontcamera;
+  // Stop the current camera stream
+  if (stream) {
+    const tracks = stream.getTracks();
+    tracks.forEach(track => track.stop());
+  }
 
-            // Reopen the camera with the new camera selection.
-    openCamera();
-  })
+  // Reopen the camera with the new camera selection
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: isFrontcamera ? 'user' : 'environment' } });
+    cameraStream.srcObject = stream;
 
+    // Show the camera stream and hide the captured photo
+    cameraContainer.style.display = 'flex';
+    photoContainer.style.display = 'none';
+
+    // Reset the instruction text
+    instructionTextFront.style.display = 'block';
+    instructionTextBack.style.display = 'none';
+  } catch (error) {
+    console.error('Error accessing camera:', error);
+    showAlert('Please provide permission to access your camera!');
+  }
+});
 
 }
 else {
